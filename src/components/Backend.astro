@@ -1,0 +1,32 @@
+---
+import Express from "../icons/Express.astro";
+import NodeJS from "../icons/NodeJS.astro";
+---
+
+
+<!-- Backend -->
+<section aria-labelledby="backend-heading" class="bg-white shadow-md p-6 rounded-lg">
+    <h3 id="backend-heading" class="text-xl font-bold text-gray-900 mb-4">Backend</h3>
+    <ul class="space-y-4">
+      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+        <NodeJS class="w-14 h-14" />
+        <span class="font-semibold w-28">Node.js</span>
+        <div class="flex-1">
+          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+            <div class="bg-blue-600 h-2 rounded" style="width: 85%;"></div>
+          </div>
+        </div>
+        <span class="w-24 text-sm text-gray-600">Intermedio</span>
+      </li>
+      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+        <Express class="w-14 h-14" />
+        <span class="font-semibold w-28">Express</span>
+        <div class="flex-1">
+          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+            <div class="bg-blue-600 h-2 rounded" style="width: 80%;"></div>
+          </div>
+        </div>
+        <span class="w-24 text-sm text-gray-600">Intermedio</span>
+      </li>
+    </ul>
+  </section>
