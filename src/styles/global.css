@@ -1,59 +1,15 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+@custom-media --dark-mode (prefers-color-scheme: dark);
 
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Estilo predeterminado (tema claro) */
-body {
-    background-color: white;
-    color: black;
-    transition: background-color 0.3s ease, color 0.3s ease;
+@theme {
+    --color-bgContrast: #f9f9f9;
 }
 
-/* Estilo para el modo oscuro */
-body.dark {
-    background-color: #121212;
-    color: white;
-}
-
-/* Modificar el estilo del nav cuando el modo oscuro está activo */
-body.dark nav {
-    background-color: rgba(31, 41, 55, 0.9);
-    /* Fondo oscuro para el nav */
-}
-
-body.dark nav a {
-    color: #ddd;
-    /* Color de texto en modo oscuro */
-}
-
-body.dark nav a:hover {
-    color: #007BFF;
-    /* Color de hover en dark mode */
-}
-
-/* Agregar un efecto de transición */
-body {
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
-}
-
-/* Estilos para el menú de cambio de tema */
-#themes-menu {
-    display: none;
-}
-
-#themes-menu.open {
-    display: block;
-    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-/* Animación para abrir el menú */
-@keyframes scale-up-center {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+/*and was hopping for this to do the job but i tried many others */
+@theme dark: {
+    --color-bgContrast: #66C8B6;
 }
