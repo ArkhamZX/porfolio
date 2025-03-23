@@ -1,41 +1,65 @@
----
-/* No JavaScript required for this simple static component, just markup and styling */
----
+<!-- HTML -->
+<div class="flex items-center justify-center min-h-screen px-4">
+    <div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col md:flex-row w-full max-w-4xl">
+        <!-- Left Section (Form) -->
+        <div class="w-full md:w-1/2 p-6">
+            <h1 class="text-2xl font-semibold text-gray-700">JT Dev Solution</h1>
+            <p class="text-gray-600 mt-2">Please provide your contact information:</p>
+            <p class="text-sm text-gray-500 mb-4">I will assist you as much as I can..</p>
 
-<div class="flex items-center justify-center min-h-screen bg-[#ecfdf5] p-4">
-    <div class="bg-white p-6 rounded-2xl shadow-lg flex w-full max-w-4xl">
-      <!-- Left Section (Form) -->
-      <div class="w-1/2 p-6">
-        <h1 class="text-2xl font-semibold text-gray-700">Jiffyboard</h1>
-        <p class="text-gray-600 mt-2">Please provide your contact information:</p>
-        <p class="text-sm text-gray-500 mb-4">Our team will reach out to you for a demo.</p>
-  
-        <!-- Contact Form -->
-        <form id="contact-form" class="space-y-4">
-          <input id="name" class="w-full p-3 border rounded-lg" type="text" placeholder="Name" required />
-          <input id="email" class="w-full p-3 border rounded-lg" type="email" placeholder="Email Address" required />
-          <div class="flex items-center border rounded-lg p-3">
-            <input id="phone" class="w-full outline-none" type="tel" placeholder="Number Telephone" required />
-          </div>
-          <input id="company" class="w-full p-3 border rounded-lg" type="text" placeholder="Company Name" required />
-          <input id="title" class="w-full p-3 border rounded-lg" type="text" placeholder="Your Title" required />
-          <textarea id="comments" class="w-full p-3 border rounded-lg" placeholder="Comments" rows="3" required></textarea>
-          
-          <!-- Mailto link to open user's email client with pre-filled content -->
-          <a 
-            href="mailto:jtdevelopersolucion@gmail.com?subject=Contact%20Form%20Submission&body=Name%3A%20%0A%0AEmail%3A%20%0A%0APhone%3A%20%0A%0ACompany%3A%20%0A%0ATitle%3A%20%0A%0AComments%3A%20"
-            class="w-full p-3 bg-green-400 text-white rounded-lg text-center block"
-          >
-            Contact Me!
-          </a>
-        </form>
-      </div>
-  
-      <!-- Right Section (Illustration) -->
-      <div class="w-1/2 bg-green-100 flex items-center justify-center rounded-r-2xl p-6">
-        <div class="relative">
-          <img src="https://via.placeholder.com/200" alt="Envelope Illustration" class="w-40" />
+            <!-- Contact Form -->
+            <form id="contact-form" class="space-y-4">
+                <input id="name" class="w-full p-3 border rounded-lg" type="text" placeholder="Name" required />
+                <input id="email" class="w-full p-3 border rounded-lg" type="email" placeholder="Email Address" required />
+                <div class="flex items-center border rounded-lg p-3">
+                    <input id="phone" class="w-full outline-none" type="tel" placeholder="Phone Number" required />
+                </div>
+                <input id="company" class="w-full p-3 border rounded-lg" type="text" placeholder="Company Name" required />
+                <input id="title" class="w-full p-3 border rounded-lg" type="text" placeholder="Your Title" required />
+                <textarea id="comments" class="w-full p-3 border rounded-lg" placeholder="Comments" rows="3" required></textarea>
+
+                <!-- Mailto link to open user's email client with pre-filled content -->
+                <button type="button" onclick="sendEmail()" class="w-full p-3 bg-green-400 text-white rounded-lg text-center block">
+                    Contact Me!
+                </button>
+            </form>
         </div>
-      </div>
+
+        <!-- Right Section (LinkedIn and GitHub Links) -->
+        <div class="w-full md:w-1/2 bg-green-100 flex flex-col items-center justify-center rounded-r-2xl p-6 space-y-4">
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="text-xl text-blue-600 hover:underline">LinkedIn</a>
+            <a href="https://github.com/your-profile" target="_blank" class="text-xl text-gray-900 hover:underline">GitHub</a>
+        </div>
     </div>
 </div>
+
+<script type="module">
+    function sendEmail() {
+        // Obtener los valores de los campos del formulario
+        const nameElement = document.getElementById("name") 
+        const emailElement = document.getElementById("email") 
+        const phoneElement = document.getElementById("phone") 
+        const companyElement = document.getElementById("company") 
+        const titleElement = document.getElementById("title") 
+        const commentsElement = document.getElementById("comments") 
+
+        const name = nameElement ? nameElement.value : '';
+
+        const email = emailElement ? emailElement.value : '';
+
+        const phone = phoneElement ? phoneElement.value : '';
+
+        const company = companyElement ? companyElement.value : '';
+
+        const title = titleElement ? titleElement.value : '';
+        
+        const comments = commentsElement ? commentsElement.value : '';
+
+        // Crear el enlace mailto con los datos del formulario
+        const mailtoLink = `mailto:jtdevelopersolucion@gmail.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0APhone:%20${encodeURIComponent(phone)}%0ACompany:%20${encodeURIComponent(company)}%0ATitle:%20${encodeURIComponent(title)}%0AComments:%20${encodeURIComponent(comments)}`;
+
+        // Redirigir al usuario al enlace mailto
+        window.location.href = mailtoLink;
+    }
+    window.sendEmail = sendEmail;
+</script>
