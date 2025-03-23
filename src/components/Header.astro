@@ -1,34 +1,121 @@
 ---
 import "../styles/global.css";
+
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navItems = [
+  {
+    title: "Experiencia",
+    label: "experiencia",
+    url: "/#experiencia",
+  },
+  {
+    title: "Habilidades",
+    label: "habilidades",
+    url: "/#habilidades",
+  },
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  {
+    title: "Sobre mí",
+    label: "sobre-mi",
+    url: "/#sobre-mi",
+  },
+  {
+    title: "Contacto",
+    label: "contacto",
+    url: "jtdevelopersolucion@gmail.com",
+  },
+]
 ---
 
-<nav class="bg-white shadow-md sticky top-0 z-50">
-  <div class="container mx-auto flex justify-between items-center p-4">
-    <a href="/" class="text-2xl font-bold text-gray-900">JT Developer</a>
-    <ul class="hidden md:flex space-x-6">
-      <li><a href="#about" class="text-gray-700 hover:text-blue-600">Sobre mí</a></li>
-      <li><a href="#projects" class="text-gray-700 hover:text-blue-600">Proyectos</a></li>
-      <li><a href="#contact" class="text-gray-700 hover:text-blue-600">Contacto</a></li>
-    </ul>
-    <button class="md:hidden text-gray-700" id="menu-toggle">
-      ☰
-    </button>
-  </div>
-  <ul class="md:hidden flex flex-col items-center bg-white w-full py-2" id="mobile-menu">
-    <li><a href="#about" class="block py-2 text-gray-700 hover:text-blue-600">Sobre mí</a></li>
-    <li><a href="#projects" class="block py-2 text-gray-700 hover:text-blue-600">Proyectos</a></li>
-    <li><a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contacto</a></li>
-  </ul>
-</nav>
+<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+  <nav
+    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+  >
+    {navItems.map((link) => (
+      <a
+        class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+        aria-label={link.label}
+        href={link.url}
+      >
+        {link.title}
+      </a>
+    ))}
+    <ThemeToggle />
+  </nav>
+</header>
 
 <script>
-  const menuToggle = document.getElementById('menu-toggle');
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenu) {
-        mobileMenu.classList.toggle('hidden');
-      }
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-blue-500");
+            } else {
+              item.classList.remove("text-blue-500");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
     });
-  }
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
+  });
 </script>
+
+<style>
+  nav {
+    animation: nav-shadow 1s linear both;
+    /* Removed invalid animation-timeline and animation-range */
+    background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
+  }
+
+  /* Styles to handle dark mode background */
+  .dark nav {
+    background-color: rgba(31, 41, 55, 0.9); /* dark:bg-gray-800/90 */
+  }
+
+  /* Keyframes for the shadow animation */
+  @keyframes nav-shadow {
+    0% {
+      background-color: rgba(255, 255, 255, 0); /* bg-white/0 */
+      box-shadow: none;
+      backdrop-filter: none;
+      border: none;
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+      backdrop-filter: blur(10px); /* backdrop-blur */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* ring-white/10 */
+    }
+  }
+</style>

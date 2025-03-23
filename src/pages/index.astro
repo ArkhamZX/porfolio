@@ -1,13 +1,28 @@
 ---
-import Header from '../components/Header.astro';
-import Skills from '../components/Skills.astro';
-import Layout from '../layouts/Layout.astro';
+import About from "../components/About.astro";
+import Header from "../components/Header.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Skills from "../components/Skills.astro";
+import TitleSection from "../components/TitleSection.astro";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Header />
-	<Skills />
+<Layout title="Inicio" description="Página de inicio de mi portafolio">
+	<main class="px-4">
+		<SectionContainer class="py-16 md:py-36" />
+		<div class="space-y-24">
+			<SectionContainer id="habilidades">
+				<TitleSection class="text-center"> Habilidades </TitleSection>
+				<Skills />
+			</SectionContainer>
+			<SectionContainer id="sobre-mi">
+				<TitleSection> Sobre mí </TitleSection>
+				<About />
+			</SectionContainer>
+		</div>
+	</main>
 </Layout>
+
