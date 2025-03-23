@@ -1,0 +1,41 @@
+---
+/* No JavaScript required for this simple static component, just markup and styling */
+---
+
+<div class="flex items-center justify-center min-h-screen bg-[#ecfdf5] p-4">
+    <div class="bg-white p-6 rounded-2xl shadow-lg flex w-full max-w-4xl">
+      <!-- Left Section (Form) -->
+      <div class="w-1/2 p-6">
+        <h1 class="text-2xl font-semibold text-gray-700">Jiffyboard</h1>
+        <p class="text-gray-600 mt-2">Please provide your contact information:</p>
+        <p class="text-sm text-gray-500 mb-4">Our team will reach out to you for a demo.</p>
+  
+        <!-- Contact Form -->
+        <form id="contact-form" class="space-y-4">
+          <input id="name" class="w-full p-3 border rounded-lg" type="text" placeholder="Name" required />
+          <input id="email" class="w-full p-3 border rounded-lg" type="email" placeholder="Email Address" required />
+          <div class="flex items-center border rounded-lg p-3">
+            <input id="phone" class="w-full outline-none" type="tel" placeholder="Number Telephone" required />
+          </div>
+          <input id="company" class="w-full p-3 border rounded-lg" type="text" placeholder="Company Name" required />
+          <input id="title" class="w-full p-3 border rounded-lg" type="text" placeholder="Your Title" required />
+          <textarea id="comments" class="w-full p-3 border rounded-lg" placeholder="Comments" rows="3" required></textarea>
+          
+          <!-- Mailto link to open user's email client with pre-filled content -->
+          <a 
+            href="mailto:jtdevelopersolucion@gmail.com?subject=Contact%20Form%20Submission&body=Name%3A%20%0A%0AEmail%3A%20%0A%0APhone%3A%20%0A%0ACompany%3A%20%0A%0ATitle%3A%20%0A%0AComments%3A%20"
+            class="w-full p-3 bg-green-400 text-white rounded-lg text-center block"
+          >
+            Contact Me!
+          </a>
+        </form>
+      </div>
+  
+      <!-- Right Section (Illustration) -->
+      <div class="w-1/2 bg-green-100 flex items-center justify-center rounded-r-2xl p-6">
+        <div class="relative">
+          <img src="https://via.placeholder.com/200" alt="Envelope Illustration" class="w-40" />
+        </div>
+      </div>
+    </div>
+</div>
