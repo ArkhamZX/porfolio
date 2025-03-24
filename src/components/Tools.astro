@@ -13,98 +13,53 @@ import Vercel from "../icons/Tools-icons/Vercel.astro";
 ---
 
 <!-- Tools -->
-<section aria-labelledby="backend-heading" class="bg-white shadow-md p-6 rounded-lg">
-    <h3 id="backend-heading" class="text-xl font-bold text-gray-900 mb-4">Herramientas</h3>
-    <ul class="space-y-4">
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <GitHub class="w-14 h-14" />
-        <span class="font-semibold w-28">Git/GitHub</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 85%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Intermedio</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Docker class="w-14 h-14" />
-        <span class="font-semibold w-28">Docker</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 40%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <AWS class="w-14 h-14" />
-        <span class="font-semibold w-28">AWS</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 40%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Firebase class="w-14 h-14" />
-        <span class="font-semibold w-28">Firebase</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 40%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Supabase class="w-14 h-14" />
-        <span class="font-semibold w-28">Supebase</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 40%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Postman class="w-14 h-14" />
-        <span class="font-semibold w-28">Postman</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 80%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Intermedio</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Azure class="w-14 h-14" />
-        <span class="font-semibold w-28">Azure</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 30%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Vercel class="w-14 h-14" />
-        <span class="font-semibold w-28">Vercel</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 40%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Heroku class="w-14 h-14" />
-        <span class="font-semibold w-28">Heroku</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 40%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-    </ul>
-  </section>
+<section aria-labelledby="tools-heading" class="bg-white shadow-md p-6 rounded-lg">
+  <h3 id="tools-heading" class="text-xl font-bold text-gray-900 mb-4 text-center">Herramientas</h3>
+  <ul class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Git/GitHub</h1>
+      <GitHub class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Intermedio</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Docker</h1>
+      <Docker class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">AWS</h1>
+      <AWS class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Firebase</h1>
+      <Firebase class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Supabase</h1>
+      <Supabase class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Postman</h1>
+      <Postman class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Intermedio</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Azure</h1>
+      <Azure class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Vercel</h1>
+      <Vercel class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <h1 class="font-semibold">Heroku</h1>
+      <Heroku class="w-14 h-14 my-2" />
+      <h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+    </li>
+  </ul>
+</section>

@@ -9,93 +9,58 @@ import TypeScript from "../icons/Front-icons/TypeScript.astro";
 import CSS from "../icons/Front-icons/CSS.astro";
 import "../styles/global.css";
 ---
-   <!-- Frontend -->
-<section aria-labelledby="frontend-heading" class="bg-white shadow-md p-6 rounded-lg">
-    <h3 id="frontend-heading" class="text-xl font-bold text-gray-900 mb-4">Frontend</h3>
-    <ul class="space-y-3">
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <HTML class="w-14 h-14" />
-        <span class="font-semibold w-28">HTML</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 95%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Avanzado</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <CSS class="w-14 h-14" />
-        <span class="font-semibold w-28">CSS</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 90%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Avanzado</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <JavaScript class="w-14 h-14" />
-        <span class="font-semibold w-28">JavaScript</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 85%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold" >Intermedio</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <TypeScript class="w-14 h-14" />
-        <span class="font-semibold w-28">TypeScript</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 75%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Intermedio</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <React class="w-14 h-14" />
-        <span class="font-semibold w-28">React</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 75%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Intermedio</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <NextJS class="w-14 h-14" />
-        <span class="font-semibold w-28">Next.js</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 75%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Intermedio</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Tailwind class="w-14 h-14" />
-        <span class="font-semibold w-28">Tailwind</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 40%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Principiante</span>
-      </li>
-      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-        <Bootstrap class="w-14 h-14" />
-        <span class="font-semibold w-28">Bootstrap</span>
-        <div class="flex-1">
-          <div class="bg-gray-200 h-2 rounded" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-            <div class="bg-blue-600 h-2 rounded" style="width: 70%;"></div>
-          </div>
-        </div>
-        <span class="w-24 text-sm text-gray-600 font-bold">Intermedio</span>
-        
-      </li>
-    </ul>
-   
-  </section>
 
-  
+<!-- Frontend -->
+<section
+	aria-labelledby="frontend-heading"
+	class="bg-white shadow-md p-6 rounded-lg"
+>
+	<h3
+		id="frontend-heading"
+		class="text-xl font-bold text-gray-900 mb-4 text-center"
+	>
+		Frontend
+	</h3>
+	<ul class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">HTML</h1>
+			<HTML class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Avanzado</h2>
+		</li>
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">CSS</h1>
+			<CSS class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Avanzado</h2>
+		</li>
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">JavaScript</h1>
+			<JavaScript class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Intermedio</h2>
+		</li>
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">TypeScript</h1>
+			<TypeScript class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Intermedio</h2>
+		</li>
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">React</h1>
+			<React class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Intermedio</h2>
+		</li>
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">Next.js</h1>
+			<NextJS class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Intermedio</h2>
+		</li>
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">Tailwind</h1>
+			<Tailwind class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Principiante</h2>
+		</li>
+		<li class="flex flex-col items-center text-center">
+			<h1 class="font-semibold">Bootstrap</h1>
+			<Bootstrap class="w-14 h-14 my-2" />
+			<h2 class="text-sm text-gray-600 font-bold">Intermedio</h2>
+		</li>
+	</ul>
+</section>
