@@ -1,0 +1,80 @@
+---
+import {
+    HTMLIcon,
+    CSSIcon, 
+    JavaScriptIcon, 
+    TypeScriptIcon,  
+    ReactIcon, 
+    NextJSIcon, 
+    NodeJSIcon,
+    AstroJSIcon,
+    AngularIcon,
+    MongoDBIcon,
+    PostgreSQLIcon,
+    DockerIcon,
+    TailwindIcon,
+} from 
+"../../icons";
+
+interface Props {
+	tegnologies: Technology[];
+	withIcon?: boolean;
+}
+
+const {tegnologies, withIcon} = Astro.props;
+
+const iconShip = {
+	HTML: HTMLIcon,
+	CSS: CSSIcon,
+	JavaScript: JavaScriptIcon,
+	TypeScript: TypeScriptIcon,
+	React: ReactIcon,
+	NextJS: NextJSIcon,
+	NodeIcon: NodeJSIcon,
+	Astro: AstroJSIcon,
+	Angular: AngularIcon,
+	MongoDB: MongoDBIcon,
+	PostgreSQL: PostgreSQLIcon,
+	Docker: DockerIcon,
+	Tailwind: TailwindIcon,
+};
+---
+
+<ul class="chips">
+	{
+		tegnologies.map((teg) => {
+			const IconComponent = iconShip[teg];
+			return (
+				<li class="chip">
+					{withIcon && IconComponent && <IconComponent class="ship__icon" />}{" "}
+					{teg}
+				</li>
+			);
+		})
+	}
+</ul>
+
+<style>
+	.chips {
+		display: flex;
+		gap: 0.6em;
+		flex-wrap: wrap;
+	}
+	.chip {
+		padding: 0.3rem 0.6rem;
+		border-radius: 0.4rem;
+		background-color: rgba(var(--color-button-accent), 0.2);
+		border: 1px solid rgba(var(--color), 0.2);
+
+		display: flex;
+		gap: 0.2em;
+		flex-wrap: wrap;
+		align-items: center;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+	}
+	.ship__icon {
+		width: 1.1rem;
+		color: rgba(var(--color), 1);
+	}
+</style>
