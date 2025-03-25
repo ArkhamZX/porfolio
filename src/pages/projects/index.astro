@@ -1,4 +1,5 @@
 ---
+import ClientRouter from "astro/components/ClientRouter.astro";
 import Proyects from "../../components/Proyects.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getProjectsCollection } from "../../utils/getProjectsCollection";
@@ -11,7 +12,8 @@ const projects = await getProjectsCollection();
 <Layout title="Proyectos" description="Description of the projects page">
   <main class="wrapper">
     <div class="projects">
-      <Proyects client:only="react" initialProyects={projects} />
+      <Proyects client:load initialProyects={projects} />
+      <ClientRouter />
     </div>
   </main>
 </Layout>
