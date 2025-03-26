@@ -11,7 +11,7 @@ const projects = await getProjectsFetaturd();
   <TitleSection title="Proyectos destacados">
   </TitleSection>
 
-  <div class="proyects__list grid grid-cols-[repeat(auto-fill,_minmax(20rem,_1fr))] gap-8">
+  <div class="proyects__list grid grid-cols-[repeat(auto-fill,_minmax(30rem,_1fr))] gap-8">
     {projects.map(proyect => <ProyectCard proyect={proyect} />)}
   </div>
   

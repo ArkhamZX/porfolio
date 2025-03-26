@@ -1,78 +1,88 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
-import GitHub from '../../icons/GitHub.astro';
-import Link from '../../icons/Link.astro';
+import Layout from "../../layouts/Layout.astro";
+import type {GetStaticPaths} from "astro";
+import {getCollection} from "astro:content";
+import GitHub from "../../icons/GitHub.astro";
+import Link from "../../icons/Link.astro";
+import TitleSection from "../../components/TitleSection.astro";
 
 export const getStaticPaths = (async () => {
-  const proyects = await getCollection('projects');
-  return proyects.map((proyect) => ({
-    params: { id: proyect.slug },
-    props: { proyect }
-  }));
+	const proyects = await getCollection("projects");
+	return proyects.map((proyect) => ({
+		params: {id: proyect.slug},
+		props: {proyect},
+	}));
 }) satisfies GetStaticPaths;
 
-const { id } = Astro.params;
-const { proyect } = Astro.props;
-const { Content } = await proyect.render();
-const { demoUrl, image, repoUrl, title, tags, summary } = proyect.data;
+const {id} = Astro.params;
+const {proyect} = Astro.props;
+const {Content} = await proyect.render();
+const {demoUrl, image, repoUrl, title, tags, summary} = proyect.data;
 ---
 
 <Layout title={id} description={summary}>
-  <main class="pt-32 px-4 pb-4 flex flex-col items-center">
-    <div>
-      <button 
-        class="py-2 px-4 mb-8 rounded-md border border-white/25 bg-transparent cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-500/50 hover:shadow-lg"
-        onclick="history.back()"
-        aria-label="botón para ir a los proyectos"
-      >
-        Volver a proyectos
-      </button>
-      <h1 class="text-2xl font-semibold leading-tight mb-4" transition:name={`${title}-title`}>
-        {title}
-      </h1>
-      <span class="inline-block text-sm mb-5 text-gray-500">
-        {summary}
-      </span>
-      <img 
-        class="max-w-[50rem] aspect-video rounded-md my-8 transition-transform duration-300 ease-in-out hover:scale-[1.02]"
-        src={image.src} 
-        alt={title} 
-      />
+	<main class="pt-32 px-4 pb-4 flex flex-col items-center">
+		<div>
+			<button
+				class="py-2 px-4 mb-8 rounded-md border border-white/25 bg-transparent cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-500/50 hover:shadow-lg"
+				onclick="history.back()"
+				aria-label="botón para ir a los proyectos"
+			>
+				Volver a proyectos
+			</button>
+			<TitleSection
+				class="text-2xl font-semibold leading-tight mb-4"
+				transition:name={`${title}-title`}
+			>
+				{title}
+			</TitleSection>
+			<span class="inline-block text-sm mb-5 text-gray-500">
+				{summary}
+			</span>
+			<img
+				class="max-w-[50rem] aspect-video rounded-md my-8 transition-transform duration-300 ease-in-out hover:scale-[1.02]"
+				src={image.src}
+				alt={title}
+			/>
 
-      <div class="w-full py-8 flex flex-col gap-y-6">
-        <div class="flex items-center gap-8">
-          {demoUrl && (
-            <a
-              class="py-2 px-4 rounded-md border border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer hover:bg-blue-500/50 hover:-translate-y-[2px]"
-              href={demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="link para ver demo"
-            >
-              <Link class="w-5 h-5" />
-              <span>Ver demo</span>
-            </a>
-          )}
-          {repoUrl && (
-            <a
-              class="py-2 px-4 rounded-md border border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer hover:bg-blue-500/50 hover:-translate-y-[2px]"
-              href={repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="link para ver repositorio"
-            >
-              <GitHub class="w-5 h-5" />
-              <span>Ver repositorio</span>
-            </a>
-          )}
-        </div>
-      </div>
+			<div class="w-full py-8 flex flex-col gap-y-6">
+				<div class="flex items-center gap-8">
+					{
+						demoUrl && (
+							<a
+								class="py-2 px-4 rounded-md border  text-gray-800 dark:text-gray-200  border-black/25 dark:border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer hover:bg-blue-500/50 hover:-translate-y-[2px]"
+								href={demoUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="link para ver demo"
+							>
+								<Link class="w-5 h-5" />
+								<span>Ver demo</span>
+							</a>
+						)
+					}
+					{
+						repoUrl && (
+							<a
+								class="py-2 px-4 rounded-md border  text-gray-800 dark:text-gray-200  border-black/25 dark:border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer hover:bg-blue-500/50 hover:-translate-y-[2px]"
+								href={repoUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="link para ver repositorio"
+							>
+								<GitHub class="w-5 h-5" />
+								<span>Ver repositorio</span>
+							</a>
+						)
+					}
+				</div>
+			</div>
 
-      <div class="max-w-[50rem] flex flex-col gap-4 leading-relaxed">
-        <Content />
-      </div>
-    </div>
-  </main>
+			<div
+				class="max-w-[50rem] flex flex-col gap-4 leading-relaxed text-gray-800 dark:text-gray-200 "
+			>
+				<Content />
+			</div>
+		</div>
+	</main>
 </Layout>

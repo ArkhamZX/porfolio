@@ -1,69 +1,83 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type {CollectionEntry} from "astro:content";
+import Chips from "../../components/Chips/Chips.astro";
+import type {Technology} from "../../interfaces/types";
 
 type Props = {
-  proyect: CollectionEntry<'projects'>;
+	proyect: CollectionEntry<"projects">;
 };
 
-const { proyect } = Astro.props;
-const { title, summary, isInConstruction, image } = proyect.data;
+const {proyect} = Astro.props;
+const {title, summary, isInConstruction, image, tags} = proyect.data;
+const tegnologiesTags = tags as Technology[];
 ---
 
-<article class="flex flex-col group md:flex-row md:space-x-8 space-y-8 md:space-y-0">
-  <!-- Sección Izquierda: Imagen -->
-  <div class="w-full md:w-1/2">
-    <a href={`/info-proyects/${proyect.slug}`} class="block">
-      <div class="relative flex flex-col items-center gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-        {image ? (
-          <img 
-            alt={title} 
-            class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" 
-            loading="lazy" 
-            src={image.src} 
-          />
-        ) : (
-          <div class="w-full h-56 flex items-center justify-center bg-gray-300">
-            No Image
-          </div>
-        )}
-      </div>
-    </a>
-  </div>
-  
-  <!-- Sección Derecha: Contenido -->
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <a href={`/info-proyects/${proyect.slug}`} class="block">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">{title}</h2>
-      <div class="mt-2 text-gray-700 dark:text-gray-400">
-        {isInConstruction && (
-          <span class="text-sm text-red-600 mr-2">En desarrollo</span>
-        )}
-        <p>{summary}</p>
-      </div>
-    </a>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke-width="2.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon mt-4"
-    >
-      <line x1="5" y1="12" x2="19" y2="12"></line>
-      <polyline points="12 5 19 12 12 19"></polyline>
-    </svg>
-  </div>
+<article
+	class="flex flex-col group md:flex-row md:space-x-8 space-y-8 md:space-y-0"
+>
+	<!-- Sección Izquierda: Imagen -->
+	<div class="w-full md:w-1/2">
+		<a href={`/info-proyects/${proyect.slug}`} class="block">
+			<div
+				class="relative flex flex-col items-center gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
+			>
+				{
+					image ? (
+						<img
+							alt={title}
+							class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+							loading="lazy"
+							src={image.src}
+						/>
+					) : (
+						<div class="w-full h-56 flex items-center justify-center bg-gray-300">
+							No Image
+						</div>
+					)
+				}
+			</div>
+		</a>
+	</div>
+
+	<!-- Sección Derecha: Contenido -->
+	<div class="w-full md:w-1/2 md:max-w-lg">
+		<a href={`/info-proyects/${proyect.slug}`} class="block">
+			<h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+				{title}
+			</h2>
+			<div class="mt-2 text-gray-700 dark:text-gray-400">
+				{
+					isInConstruction && (
+						<span class="text-sm text-red-600 mr-2">En desarrollo</span>
+					)
+				}
+				<p>{summary}</p>
+				<Chips tegnologies={tegnologiesTags} />
+			</div>
+		</a>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="20"
+			height="20"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-width="2.5"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			class="icon mt-4"
+		>
+			<line x1="5" y1="12" x2="19" y2="12"></line>
+			<polyline points="12 5 19 12 12 19"></polyline>
+		</svg>
+	</div>
 </article>
 
 <style>
-  .icon {
-    stroke: currentColor;
-    transition: transform 0.3s ease-in-out;
-  }
-  .group:hover .icon {
-    transform: translateX(4px);
-  }
+	.icon {
+		stroke: currentColor;
+		transition: transform 0.3s ease-in-out;
+	}
+	.group:hover .icon {
+		transform: translateX(4px);
+	}
 </style>
