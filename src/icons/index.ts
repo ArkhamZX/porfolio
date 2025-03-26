@@ -7,6 +7,7 @@ import HTMLIcon from './Front-icons/HTML.astro';
 import CSSIcon from './Front-icons/CSS.astro';
 import BootstrapIcon from './Front-icons/Bootstrap.astro';
 import TailwindIcon from './Front-icons/Tailwind.astro';
+import FlutterIcon from './Front-icons/Flutter.astro';
 
 // Backend icons
 import CsharpIcon from './Backend-icons/Csharp.astro';
@@ -54,6 +55,7 @@ export {
   CSSIcon,
   BootstrapIcon,
   TailwindIcon,
+  FlutterIcon,
   CsharpIcon,
   ExpressIcon,
   NodeJSIcon,
