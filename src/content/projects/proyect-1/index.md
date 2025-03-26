@@ -6,6 +6,7 @@ draft: false
 isInConstruction: false
 isFeatured: true
 tags:
+  - React.js
   - Next.js
   - TypeScript
   - Tailwind

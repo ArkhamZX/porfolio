@@ -15,6 +15,7 @@ import {
     TailwindIcon,
 } from 
 "../../icons";
+import type { Technology } from "../../interfaces/types";
 
 interface Props {
 	tegnologies: Technology[];
@@ -43,13 +44,16 @@ const iconShip = {
 <ul class="chips">
 	{
 		tegnologies.map((teg) => {
-			const IconComponent = iconShip[teg];
-			return (
-				<li class="chip">
-					{withIcon && IconComponent && <IconComponent class="ship__icon" />}{" "}
-					{teg}
-				</li>
-			);
+			if (teg in iconShip) {
+				const IconComponent = iconShip[teg as keyof typeof iconShip];
+				return (
+					<li class="chip">
+						{withIcon && IconComponent && <IconComponent class="ship__icon" />}{" "}
+						{teg}
+					</li>
+				);
+			}
+			return null;
 		})
 	}
 </ul>

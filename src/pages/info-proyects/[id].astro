@@ -5,6 +5,8 @@ import {getCollection} from "astro:content";
 import GitHub from "../../icons/GitHub.astro";
 import Link from "../../icons/Link.astro";
 import TitleSection from "../../components/TitleSection.astro";
+import Chips from "../../components/Chips/Chips.astro";
+import type { Technology } from "../../interfaces/types";
 
 export const getStaticPaths = (async () => {
 	const proyects = await getCollection("projects");
@@ -18,6 +20,8 @@ const {id} = Astro.params;
 const {proyect} = Astro.props;
 const {Content} = await proyect.render();
 const {demoUrl, image, repoUrl, title, tags, summary} = proyect.data;
+const tegnologiesTags = tags as Technology[];
+
 ---
 
 <Layout title={id} description={summary}>
@@ -64,7 +68,7 @@ const {demoUrl, image, repoUrl, title, tags, summary} = proyect.data;
 					{
 						repoUrl && (
 							<a
-								class="py-2 px-4 rounded-md border  text-gray-800 dark:text-gray-200  border-black/25 dark:border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer hover:bg-blue-500/50 hover:-translate-y-[2px]"
+								class="py-2 px-4 rounded-md border   text-gray-800 dark:text-gray-200  border-black/25 dark:border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer hover:bg-blue-500/50 hover:-translate-y-[2px]"
 								href={repoUrl}
 								target="_blank"
 								rel="noopener noreferrer"
@@ -73,6 +77,11 @@ const {demoUrl, image, repoUrl, title, tags, summary} = proyect.data;
 								<GitHub class="w-5 h-5" />
 								<span>Ver repositorio</span>
 							</a>
+           
+                <Chips tegnologies={tegnologiesTags} withIcon />
+             
+              
+
 						)
 					}
 				</div>
