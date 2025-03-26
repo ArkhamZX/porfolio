@@ -12,48 +12,59 @@ const {title, summary, isInConstruction, image, tags} = proyect.data;
 const tegnologiesTags = tags as Technology[];
 ---
 
-<article class="flex flex-col space-y-4 max-w-md mx-auto rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
-  <!-- Imagen arriba -->
-  <div class="w-full h-40 overflow-hidden">
-    <a href={`/info-proyects/${proyect.slug}`} class="block">
-      <div class="relative flex items-center transition duration-500 ease-in-out transform group-hover:shadow-xl">
-        {image ? (
-          <img
-            alt={title}
-            class="object-cover object-center w-full h-full transition duration-500 group-hover:scale-105"
-            loading="lazy"
-            src={image.src}
-          />
-        ) : (
-          <div class="w-full h-full flex items-center justify-center bg-gray-300">
-            No Image
-          </div>
-        )}
-      </div>
-    </a>
-  </div>
+<article
+	class="flex flex-col space-y-4 max-w-md mx-auto rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800"
+>
+	<!-- Imagen arriba -->
+	<div class="w-full h-40 overflow-hidden">
+		<a href={`/info-proyects/${proyect.slug}`} class="block">
+			<div
+				class="relative flex items-center transition duration-500 ease-in-out transform group-hover:shadow-xl"
+			>
+				{
+					image ? (
+						<img
+							alt={title}
+							class="object-cover object-center w-full h-full transition duration-500 group-hover:scale-105"
+							loading="lazy"
+							src={image.src}
+						/>
+					) : (
+						<div class="w-full h-full flex items-center justify-center bg-gray-300">
+							No Image
+						</div>
+					)
+				}
+			</div>
+		</a>
+	</div>
 
-  <!-- Contenido abajo -->
-  <div class="w-full p-4">
-    <a href={`/info-proyects/${proyect.slug}`} class="block ">
-      <h2 class="text-lg font-bold text-gray-800 dark:text-gray-100 text-center">{title}</h2>
-      <div class="mt-2 text-gray-700 dark:text-gray-400 text-sm">
-        {isInConstruction && (
-          <span class="text-xs text-red-600 mr-2">En desarrollo</span>
-        )}
-        <p class="text-center">{summary}</p>
-        <Chips tegnologies={tegnologiesTags} />
-      </div>
-    </a>
-    
-  </div>
+	<!-- Contenido abajo -->
+	<div class="w-full p-4">
+		<a href={`/info-proyects/${proyect.slug}`} class="block">
+			<h2
+				class="text-lg font-bold text-gray-800 dark:text-gray-100 text-center"
+			>
+				{title}
+			</h2>
+			<div class="mt-2 text-gray-700 dark:text-gray-400 text-sm">
+				{
+					isInConstruction && (
+						<span class="text-xs text-red-600 mr-2">En desarrollo</span>
+					)
+				}
+				<p class="text-center mb-5">{summary}</p>
+				<Chips tegnologies={tegnologiesTags} />
+			</div>
+		</a>
+	</div>
 </article>
 
 <style>
-  .icon {
-    transition: transform 0.3s ease-in-out;
-  }
-  .group:hover .icon {
-    transform: translateX(4px);
-  }
+	.icon {
+		transition: transform 0.3s ease-in-out;
+	}
+	.group:hover .icon {
+		transform: translateX(4px);
+	}
 </style>

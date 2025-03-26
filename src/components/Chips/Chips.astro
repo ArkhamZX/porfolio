@@ -13,8 +13,7 @@ import {
     PostgreSQLIcon,
     DockerIcon,
     TailwindIcon,
-} from 
-"../../icons";
+} from "../../icons";
 import type { Technology } from "../../interfaces/types";
 
 interface Props {
@@ -37,18 +36,19 @@ const iconShip = {
 	MongoDB: MongoDBIcon,
 	PostgreSQL: PostgreSQLIcon,
 	Docker: DockerIcon,
+	'Zustand': 'Zustand',
 	Tailwind: TailwindIcon,
 };
 ---
 
-<ul class="chips">
+<ul class="flex flex-wrap gap-2">
 	{
 		tegnologies.map((teg) => {
 			if (teg in iconShip) {
 				const IconComponent = iconShip[teg as keyof typeof iconShip];
 				return (
-					<li class="chip">
-						{withIcon && IconComponent && <IconComponent class="ship__icon" />}{" "}
+					<li class="flex items-center gap-2 px-2 py-1 text-xs font-semibold text-gray-700 uppercase bg-gray-100 rounded-md border border-gray-300">
+						{withIcon && IconComponent && <IconComponent class="w-4 h-4 text-gray-700" />}
 						{teg}
 					</li>
 				);
@@ -57,28 +57,3 @@ const iconShip = {
 		})
 	}
 </ul>
-
-<style>
-	.chips {
-		display: flex;
-		gap: 0.6em;
-		flex-wrap: wrap;
-	}
-	.chip {
-		padding: 0.3rem 0.6rem;
-		border-radius: 0.4rem;
-		background-color: rgba(var(--color-button-accent), 0.2);
-		border: 1px solid rgba(var(--color), 0.2);
-
-		display: flex;
-		gap: 0.2em;
-		flex-wrap: wrap;
-		align-items: center;
-		font-size: 0.75rem;
-		text-transform: uppercase;
-	}
-	.ship__icon {
-		width: 1.1rem;
-		color: rgba(var(--color), 1);
-	}
-</style>

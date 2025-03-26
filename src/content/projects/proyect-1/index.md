@@ -1,13 +1,13 @@
 ---
 title: 'Creacion de un Ecommerce en Next.js'
-image:  '../images/project/TesloSho.webp'
+image:  '../images/project/TesloShopCopy.webp'
 summary: 'Prueba técnica propuesta por Midudev'
 draft: false
 isInConstruction: false
 isFeatured: true
 tags:
-  - React.js
-  - Next.js
+  - React
+  - NextJS
   - TypeScript
   - Tailwind
   - Docker

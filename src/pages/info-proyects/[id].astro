@@ -6,7 +6,7 @@ import GitHub from "../../icons/GitHub.astro";
 import Link from "../../icons/Link.astro";
 import TitleSection from "../../components/TitleSection.astro";
 import Chips from "../../components/Chips/Chips.astro";
-import type { Technology } from "../../interfaces/types";
+import type {Technology} from "../../interfaces/types";
 
 export const getStaticPaths = (async () => {
 	const proyects = await getCollection("projects");
@@ -21,7 +21,6 @@ const {proyect} = Astro.props;
 const {Content} = await proyect.render();
 const {demoUrl, image, repoUrl, title, tags, summary} = proyect.data;
 const tegnologiesTags = tags as Technology[];
-
 ---
 
 <Layout title={id} description={summary}>
@@ -77,18 +76,14 @@ const tegnologiesTags = tags as Technology[];
 								<GitHub class="w-5 h-5" />
 								<span>Ver repositorio</span>
 							</a>
-           
-                <Chips tegnologies={tegnologiesTags} withIcon />
-             
-              
-
 						)
 					}
 				</div>
+				<Chips tegnologies={tegnologiesTags} withIcon />
 			</div>
 
 			<div
-				class="max-w-[50rem] flex flex-col gap-4 leading-relaxed text-gray-800 dark:text-gray-200 "
+				class="max-w-[50rem] flex flex-col gap-4 leading-relaxed text-gray-800 dark:text-gray-200"
 			>
 				<Content />
 			</div>
