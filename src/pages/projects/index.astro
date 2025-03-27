@@ -1,6 +1,6 @@
 ---
 import ClientRouter from "astro/components/ClientRouter.astro";
-import Proyects from "../../components/Proyects.astro";
+import { Proyects } from '../../components/react/Proyects';
 import Layout from "../../layouts/Layout.astro";
 import { getProjectsCollection } from "../../utils/getProjectsCollection";
 
@@ -12,9 +12,10 @@ const projects = await getProjectsCollection();
 <Layout title="Proyectos" description="Description of the projects page">
   <main class="wrapper">
     <div class="projects">
-      <Proyects client:load initialProyects={projects} />
+      <Proyects client:only="react" initialProyects={projects} />
       <ClientRouter />
     </div>
+  
   </main>
 </Layout>
 
@@ -25,9 +26,5 @@ const projects = await getProjectsCollection();
     display: grid;
     gap: 1.5rem;
   }
-  @media screen and (min-width: 1200px) {
-    .projects {
-      grid-template-columns: 250px 1fr;
-    }
-  }
+  
 </style>

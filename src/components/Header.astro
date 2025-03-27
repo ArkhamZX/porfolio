@@ -1,122 +1,126 @@
 ---
 import "../styles/global.css";
-import { ClientRouter } from 'astro:transitions';
+import {ClientRouter} from "astro:transitions";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const navItems = [
-  {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "/#experiencia",
-  },
-  {
-    title: "Habilidades",
-    label: "habilidades",
-    url: "/#habilidades",
-  },
-  {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "/#proyectos",
-  },
-  {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
-  },
-  {
-    title: "Contacto",
-    label: "contacto",
-    url: "mailto:jtdevelopersolucion@gmail.com",
-  },
-]
+	{
+		title: "Experiencia",
+		label: "experiencia",
+		url: "/#experiencia",
+	},
+	{
+		title: "Habilidades",
+		label: "habilidades",
+		url: "/#habilidades",
+	},
+	{
+		title: "Proyectos",
+		label: "proyectos",
+		url: "/#proyectos",
+	},
+	{
+		title: "Sobre mí",
+		label: "sobre-mi",
+		url: "/#sobre-mi",
+	},
+	{
+		title: "Contacto",
+		label: "contacto",
+		url: "mailto:jtdevelopersolucion@gmail.com",
+	},
+];
 ---
 
-<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
-  <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
-  >
-    {navItems.map((link) => (
-      <a
-        class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
-        aria-label={link.label}
-        href={link.url}
-      >
-        {link.title}
-      </a>
-    ))}
-    <ThemeToggle />
-    <ClientRouter />
-  </nav>
+<header
+	class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+>
+	<nav
+		class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+	>
+		{
+			navItems.map((link) => (
+				<a
+					class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+					aria-label={link.label}
+					href={link.url}
+				>
+					{link.title}
+				</a>
+			))
+		}
+		<ThemeToggle />
+		<ClientRouter />
+	</nav>
 </header>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("header nav a");
+	document.addEventListener("astro:page-load", () => {
+		const sections = document.querySelectorAll("section");
+		const navItems = document.querySelectorAll("header nav a");
 
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-blue-500");
-            } else {
-              item.classList.remove("text-blue-500");
-            }
-          });
-        }
-      });
-    };
+		const callback = (entries: any[]) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					navItems.forEach((item) => {
+						if (item.getAttribute("aria-label") == entry.target.id) {
+							item.classList.add("text-blue-500");
+						} else {
+							item.classList.remove("text-blue-500");
+						}
+					});
+				}
+			});
+		};
 
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    });
+		const observer = new IntersectionObserver(callback, {
+			root: null,
+			rootMargin: "0px",
+			threshold: 0.3,
+		});
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+		sections.forEach((section) => {
+			observer.observe(section);
+		});
 
-    // Cleanup function
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect();
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
-      }
-    };
-  });
+		// Cleanup function
+		document.onvisibilitychange = () => {
+			if (document.visibilityState === "hidden") {
+				observer.disconnect();
+			} else {
+				sections.forEach((section) => {
+					observer.observe(section);
+				});
+			}
+		};
+	});
 </script>
 
 <style>
-  nav {
-    animation: nav-shadow 1s linear both;
-    /* Removed invalid animation-timeline and animation-range */
-    background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
-  }
+	nav {
+		animation: nav-shadow 1s linear both;
+		/* Removed invalid animation-timeline and animation-range */
+		background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
+	}
 
-  /* Styles to handle dark mode background */
-  .dark nav {
-    background-color: rgba(31, 41, 55, 0.9); /* dark:bg-gray-800/90 */
-  }
+	/* Styles to handle dark mode background */
+	.dark nav {
+		background-color: rgba(31, 41, 55, 0.9); /* dark:bg-gray-800/90 */
+	}
 
-  /* Keyframes for the shadow animation */
-  @keyframes nav-shadow {
-    0% {
-      background-color: rgba(255, 255, 255, 0); /* bg-white/0 */
-      box-shadow: none;
-      backdrop-filter: none;
-      border: none;
-    }
-    100% {
-      background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
-      backdrop-filter: blur(10px); /* backdrop-blur */
-      border: 1px solid rgba(255, 255, 255, 0.1); /* ring-white/10 */
-    }
-  }
+	/* Keyframes for the shadow animation */
+	@keyframes nav-shadow {
+		0% {
+			background-color: rgba(255, 255, 255, 0); /* bg-white/0 */
+			box-shadow: none;
+			backdrop-filter: none;
+			border: none;
+		}
+		100% {
+			background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
+			box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+			backdrop-filter: blur(10px); /* backdrop-blur */
+			border: 1px solid rgba(255, 255, 255, 0.1); /* ring-white/10 */
+		}
+	}
 </style>
