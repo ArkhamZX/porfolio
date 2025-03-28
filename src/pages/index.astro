@@ -1,6 +1,7 @@
 ---
 import About from "../components/About.astro";
 import Contact from "../components/Contact.astro";
+import Hero from "../components/Hero.astro";
 import Proyects from "../components/Proyects.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import Skills from "../components/Skills/Skills.astro";
@@ -11,8 +12,13 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Inicio" description="Página de inicio de mi portafolio">
 	<main class="px-4">
-		<SectionContainer class="py-16 md:py-36" />
-		<div class="space-y-24">
+		<SectionContainer class="py-16 md:py-36 flex flex-col justify-center items-center md:mb-10">
+		  <Hero>
+			<Hero>
+			</slot>
+		  </Hero>
+		  </SectionContainer>
+		<div class="space-y-24 mt-16">
 			<SectionContainer id="proyectos">
 				<TitleSection>
 					<Code class="size-7" />
