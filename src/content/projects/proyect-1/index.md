@@ -1,7 +1,7 @@
 ---
 title: 'Creacion de un Ecommerce en Next.js'
 image:  '../images/project/TesloShopCopy.webp'
-summary: 'Prueba técnica propuesta por Midudev'
+summary: 'Proyecto Final de Next.JS Ecommerce'
 draft: false
 isInConstruction: false
 isFeatured: true
