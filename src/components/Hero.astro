@@ -4,6 +4,11 @@ import Badge from "../components/Badge.astro"
 import LinkedInIcon from "../icons/Linkedin.astro"
 import MailIcon from "../icons/Mail.astro"
 import SocialPill from "../icons/SocialPill.astro"
+import DownloadIcon from "../icons/Download.astro"
+import CopyIcon from "../icons/Copy.astro"
+
+const cvFile = "/JoseAndresCV.pdf";
+const email = "jtdevelopersolucion@gmail.com";
 ---
 
 <div class="max-w-xl text-center">
@@ -22,20 +27,14 @@ import SocialPill from "../icons/SocialPill.astro"
       <Badge>Disponible para trabajar</Badge>
     </a>
   </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
+  <h1 class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white">
     ¡Hola!, Soy Jose Andres Trinidad
   </h1>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
-    +5 años de experiencia. <strong
-      >Desarrollador de Software e Desarrollador Frontend</strong
-    > de Santo Domingo, Republica Dominicana. Especializado en el desarrollo de aplicaciones web y mobiles.
+  <p class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300">
+    +5 años de experiencia. <strong>Desarrollador de Software y Frontend</strong> de Santo Domingo, República Dominicana. Especializado en el desarrollo de aplicaciones web y móviles.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:jtdevelopersolucion@gmail.com">
+    <SocialPill href={`mailto:${email}`}>
       <MailIcon class="size-4" />
       Contáctame
     </SocialPill>
@@ -43,5 +42,28 @@ import SocialPill from "../icons/SocialPill.astro"
       <LinkedInIcon class="size-4" />
       LinkedIn
     </SocialPill>
+    <SocialPill href={cvFile} download>
+      <DownloadIcon class="size-4" />
+      Descargar CV
+    </SocialPill>
+    <SocialPill id="copy-email">
+      <CopyIcon class="size-4" />
+      Copiar Email
+    </SocialPill>
   </nav>
 </div>
+
+<!-- Script para copiar email -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyEmailButton = document.getElementById("copy-email");
+    if (copyEmailButton) {
+      copyEmailButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Evita que el <a> recargue la página
+        navigator.clipboard.writeText("jtdevelopersolucion@gmail.com")
+          .then(() => alert("Correo copiado al portapapeles!"))
+          .catch(err => console.error("Error al copiar email:", err));
+      });
+    }
+  });
+</script>
