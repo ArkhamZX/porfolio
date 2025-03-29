@@ -20,6 +20,12 @@ import Layout from "../layouts/Layout.astro";
 		  </Hero>
 		  </SectionContainer>
 		<div class="space-y-24 mt-16">
+			
+		
+			<SectionContainer id="habilidades">
+				<TitleSection> Habilidades Tecnologicas </TitleSection>
+				<Skills />
+			</SectionContainer>
 			<SectionContainer id="proyectos">
 				<TitleSection>
 					<Code class="size-7" />
@@ -27,22 +33,20 @@ import Layout from "../layouts/Layout.astro";
 				</TitleSection>
 				<Proyects />
 			</SectionContainer>
-		
-			<SectionContainer id="habilidades">
-				<TitleSection> Habilidades Tecnologicas </TitleSection>
-				<Skills />
-			</SectionContainer>
-
-			<SectionContainer>
+			<SectionContainer id="servicios">
 				<TitleSection> Servicios</TitleSection>
 				<Services />
 			</SectionContainer>
 
 			<SectionContainer id="sobre-mi">
 				<TitleSection> Sobre mí </TitleSection>
-				<About />
+				<About/>
+			</SectionContainer>
+			<SectionContainer id="sobre-mi">
+				<TitleSection> Sobre mí </TitleSection>
 				<Contact />
 			</SectionContainer>
+		
 		</div>
 	</main>
 </Layout>

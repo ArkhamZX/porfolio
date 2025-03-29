@@ -31,7 +31,7 @@ export const Proyects = ({ initialProyects }: Props) => {
   return (
     <div className="container max-w-2xl mx-auto px-4 py-8">
       	<button
-				className="py-2 px-4 mb-8 rounded-md border border-white/25 bg-transparent cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-500/50 hover:shadow-lg"
+				className="py-2 px-4 mb-8 text-black dark:text-white border-neutral-600 rounded-md border bg-transparent cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-500/50 hover:shadow-lg"
         onClick={() => history.back()}
 				aria-label="botón para ir a los proyectos"
 			>

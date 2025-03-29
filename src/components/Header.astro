@@ -1,122 +1,75 @@
 ---
 import "../styles/global.css";
-import {ClientRouter} from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const navItems = [
-	
-	{
-		title: "Proyectos",
-		label: "proyectos",
-		url: "/#proyectos",
-	},
-	{
-		title: "Habilidades",
-		label: "habilidades",
-		url: "/#habilidades",
-	},
-	{
-		title: "Sobre mí",
-		label: "sobre-mi",
-		url: "/#sobre-mi",
-	},
-	{
-		title: "Contacto",
-		label: "contacto",
-		url: "mailto:jtdevelopersolucion@gmail.com",
-	},
+	{ title: "Habilidades", label: "habilidades", url: "/#habilidades" },
+	{ title: "Proyectos", label: "proyectos", url: "/#proyectos" },
+	{ title: "Servicios", label: "servicios", url: "/#servicios" },
+	{ title: "Sobre mí", label: "sobre-mi", url: "/#sobre-mi" },
+	{ title: "Contacto", label: "contacto", url: "mailto:jtdevelopersolucion@gmail.com" },
 ];
 ---
 
-<header
-	class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
->
-	<nav
-		class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
-	>
-		{
-			navItems.map((link) => (
-				<a
-					class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
-					aria-label={link.label}
-					href={link.url}
-				>
+<header id="navbar" class="fixed text-black dark:text-white font-bold top-0 z-50 w-full transition-all duration-300 bg-transparent">
+	<div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-2">
+		<!-- Logo -->
+		<a href="/" class="text-xl font-bold text-gray-800 dark:text-white">JT Dev</a>
+
+		<!-- Menú Desktop -->
+		<nav class="hidden md:flex space-x-6">
+			{navItems.map((link) => (
+				<a class="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400" aria-label={link.label} href={link.url}>
 					{link.title}
 				</a>
-			))
-		}
+			))}
+			
+			<ClientRouter />
+		</nav>
 		<ThemeToggle />
-		<ClientRouter />
-	</nav>
+		<!-- Botón Menú Hamburguesa -->
+		<button id="menu-toggle" class="md:hidden p-2 rounded-lg text-gray-800 dark:text-white focus:outline-none">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+			</svg>
+		</button>
+	</div>
+
+	<!-- Menú Móvil -->
+	<div id="mobile-menu" class=" md:hidden flex flex-col items-center bg-white dark:bg-gray-900 shadow-lg backdrop-blur-md rounded-lg p-5 absolute top-16 right-4 w-48">
+		{navItems.map((link) => (
+			<a class="block w-full text-center py-2 text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" aria-label={link.label} href={link.url}>
+				{link.title}
+			</a>
+		))}
+	</div>
 </header>
 
 <script>
 	document.addEventListener("astro:page-load", () => {
-		const sections = document.querySelectorAll("section");
-		const navItems = document.querySelectorAll("header nav a");
+		const navbar = document.getElementById("navbar");
+		const menuToggle = document.getElementById("menu-toggle");
+		const mobileMenu = document.getElementById("mobile-menu");
 
-		const callback = (entries: any[]) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					navItems.forEach((item) => {
-						if (item.getAttribute("aria-label") == entry.target.id) {
-							item.classList.add("text-blue-500");
-						} else {
-							item.classList.remove("text-blue-500");
-						}
-					});
+		// Cambiar fondo del navbar al hacer scroll
+		if (navbar) {
+			window.addEventListener("scroll", () => {
+				if (window.scrollY > 50) {
+					navbar.classList.add("bg-white/50", "dark:bg-gray-900/80", "shadow-lg", "backdrop-blur-md");
+				} else {
+					navbar.classList.remove("bg-white/50", "dark:bg-gray-900/80", "shadow-lg", "backdrop-blur-md");
 				}
 			});
-		};
+		}
 
-		const observer = new IntersectionObserver(callback, {
-			root: null,
-			rootMargin: "0px",
-			threshold: 0.3,
-		});
-
-		sections.forEach((section) => {
-			observer.observe(section);
-		});
-
-		// Cleanup function
-		document.onvisibilitychange = () => {
-			if (document.visibilityState === "hidden") {
-				observer.disconnect();
-			} else {
-				sections.forEach((section) => {
-					observer.observe(section);
-				});
-			}
-		};
+		// Alternar menú móvil
+		if (menuToggle) {
+			menuToggle.addEventListener("click", () => {
+				if (mobileMenu) {
+					mobileMenu.classList.toggle("hidden");
+				}
+			});
+		}
 	});
 </script>
-
-<style>
-	nav {
-		animation: nav-shadow 1s linear both;
-		/* Removed invalid animation-timeline and animation-range */
-		background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
-	}
-
-	/* Styles to handle dark mode background */
-	.dark nav {
-		background-color: rgba(31, 41, 55, 0.9); /* dark:bg-gray-800/90 */
-	}
-
-	/* Keyframes for the shadow animation */
-	@keyframes nav-shadow {
-		0% {
-			background-color: rgba(255, 255, 255, 0); /* bg-white/0 */
-			box-shadow: none;
-			backdrop-filter: none;
-			border: none;
-		}
-		100% {
-			background-color: rgba(255, 255, 255, 0.5); /* bg-white/50 */
-			box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
-			backdrop-filter: blur(10px); /* backdrop-blur */
-			border: 1px solid rgba(255, 255, 255, 0.1); /* ring-white/10 */
-		}
-	}
-</style>

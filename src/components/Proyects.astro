@@ -1,26 +1,29 @@
 ---
-import { getProjectsFetaturd } from '../utils/getProjectsCollection';
-import ProyectCard from './ProyectCard/ProyectCard.astro';
-import TitleSection from './TitleSection.astro';
-
+import {getProjectsFetaturd} from "../utils/getProjectsCollection";
+import ProyectCard from "./ProyectCard/ProyectCard.astro";
+import TitleSection from "./TitleSection.astro";
 
 const projects = await getProjectsFetaturd();
 ---
 
-<section class="proyects wrapper p-4 mb-12 transition-all duration-500 ease-in-out flex flex-col gap-8" id="proyects" >
-  <TitleSection title="Proyectos destacados">
-  </TitleSection>
+<section
+	class="proyects wrapper p-4 mb-12 transition-all duration-500 ease-in-out flex flex-col gap-8"
+	id="proyects"
+>
+	<TitleSection title="Proyectos destacados" />
 
-  <div class="proyects__list grid grid-cols-[repeat(auto-fill,_minmax(30rem,_1fr))] gap-8">
-    {projects.map(proyect => <ProyectCard proyect={proyect} />)}
-  </div>
-  
-  <a href="/projects" class=" py-2 px-4 rounded-md border border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer 
-    hover:bg-blue-500/50 hover:-translate-y-[2px] 
-    dark:border-white/50 min-sm:w-3xs hover:to-blue-400 dark:text-white dark:hover:bg-blue-400/50 dark:hover:-translate-y-[2px]">
-    Ver más...
-  </a>
+	<div
+		class="proyects__list grid grid-cols-[repeat(auto-fill,_minmax(30rem,_1fr))] gap-8"
+	>
+		{projects.map((proyect) => <ProyectCard proyect={proyect} />)}
+	</div>
+
+	<a
+		href="/projects"
+		class="py-2 px-4 rounded-md border text-black border-white/25 transition-transform duration-300 ease-in-out flex items-center gap-1 no-underline cursor-pointer
+    hover:bg-blue-500/50 hover:-translate-y-[2px]
+    dark:border-white/50 min-sm:w-3xs hover:to-blue-400 dark:text-white dark:hover:bg-blue-400/50 dark:hover:-translate-y-[2px]"
+	>
+		Ver más...
+	</a>
 </section>
-
-
-
